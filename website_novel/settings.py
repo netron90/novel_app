@@ -198,8 +198,15 @@ DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
+# Handle multiple allowed hosts
+allowed_hosts = os.environ.get("ALLOWED_HOSTS", "")
+ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
+
+# Ensure the default values in case ALLOWED_HOSTS is not set or empty
+if not ALLOWED_HOSTS:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
