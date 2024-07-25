@@ -98,7 +98,7 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-defaultDB='default'
+defaultDB='postgres'
 
 def index(request):
     allCountries = Country.objects.using(defaultDB).all()
