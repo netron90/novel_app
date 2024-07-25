@@ -1,0 +1,166 @@
+{% extends 'novel/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <div class="container bg-light card p-5">
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="{% static 'novel/imgs/Logo1_1_color.svg'%}" alt="Logo POST Link"
+                        style="width: 200px !important; height: 200px !important;" class="mx-auto img-fluid">
+                    <h1 class="display-3 h1 mb-4">Vos annonces à vil prix</h1>
+                    <h3 class="text-center fw-light">Passez vos annonces selon l'option qui vous corresponds</h3>
+                    <a href="#postNovelModal" data-bs-toggle="modal"
+                        class="btn bnt-lg text-uppercase novel-bg-secondary btn-post-novel text-white mt-4 py-3">Publiez
+                        une annonce</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="row row-cols-1 row-cols-md-3 p-4">
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 1 jours</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">2000 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 2 jours</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">4000 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 3 jours</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">5500 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 1 semaine</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">8000 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 3 semaines</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">15000 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card cols m-0 shadow-sm">
+                            <div class="card-header d-flex justify-content-center novel-bg-primary-dark py-3">
+                                <i class="bi bi-stopwatch-fill text-white me-1 fs-6 my-auto"></i>
+                                <p class="ms-1 text-white fs-6 my-auto">Annonces pour 1 mois</p>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <p class="display-4 p-1">18000 f CFA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="postNovelModal" tabindex="-1" aria-labelledby="postNovelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4 text-dark" id="postNovelModalLabel">Postez une annonce</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="fs-5">Pour poster votre annonce, contactez-nous :</p>
+                    </div>
+                </div>
+                <div class="row text-dark">
+                    <div class="col-12 my-2">
+                        <a href="tel:+229000000000" class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-telephone-fill align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">(+229)000 000 000</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 my-2">
+                        <a href="mailto:post.link@bnononce.com"
+                            class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-envelope-open-fill align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">post.link@bnononce.com</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 my-2">
+                        <a href="https://ig.me/m/netron90" target="_blank"
+                            class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-instagram align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">Nonnonce Insta</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer text-center mx-auto">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-novel-contact text-white" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

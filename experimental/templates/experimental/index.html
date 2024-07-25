@@ -1,0 +1,160 @@
+{% extends 'experimental/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid h-50">
+    <div class="row bg-experimental-light justify-content-center">
+        <div class="col-md-6 col-12 my-auto d-none d-sm-none d-md-block">
+            <div class="d-flex flex-column justify-content-center my-auto mt-3 mx-auto p-5">
+                <h1 class="display-3 text-black fw-bold mb-4">Apprends un peu plus chaque jour</h1>
+                <h2 class="fs-3 text-black fw-light">Va au-dela de tes connaissances avec du matériel de pointe</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-12 d-none d-sm-none d-md-block">
+            <img src="{% static 'experimental/imgs/home-header-index.png' %}" alt="man learning image"
+                class="img-fluid">
+
+        </div>
+
+
+    </div>
+    <div class="py-5 row bg-experimental-light justify-content-center d-block d-sm-block d-md-none">
+        <div class="col-12">
+            <div class="d-flex flex-column justify-content-center my-auto mt-3 mx-auto">
+                <h1 class="fs-1 text-black fw-bold mb-3 mx-2">Apprends un peu plus chaque jour</h1>
+                <h2 class="fs-5 text-black fw-light mx-2">Va au-dela de tes connaissances avec du matériel de pointe
+                </h2>
+                <img src="{% static 'experimental/imgs/home-header-index-mobile.png' %}" alt="man learning image"
+                    class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light h-50 pb-4">
+        <div class="row justify-content-around ">
+            <div class="col-md mx-md-3 col-12 card shadow p-0 my-2">
+                <div class="d-flex flex-column ">
+                    <div class="bg-experimental-dark rounded-top py-2"></div>
+                    <div class="bg-experimental-light px-4 py-4">
+                        <div class="d-flex flex-column">
+                            <h3 class="fs-3 text-black fw-bold mt-3">Apprentissage</h3>
+                            <p class="fs-5 fw-light text-black w-75 d-none d-sm-none d-md-block">Monte en compétence
+                                avec nos tutoriels
+                                pour atteindre le niveau supérieur.</p>
+                            <p class="fs-5 fw-light text-black d-block d-sm-block d-md-none">Monte en compétence avec
+                                nos tutoriels
+                                pour atteindre le niveau supérieur.</p>
+                            <div class="d-flex justify-content-end">
+                                <a href="#"
+                                    class="d-none d-sm-none d-md-block bg-experimental-secondary btn py-2 px-1 text-uppercase btn-small w-25 fw-bold text-white">decouvrir</a>
+                                <a href="#"
+                                    class="d-block d-sm-block d-md-none bg-experimental-secondary btn py-2 px-1 text-uppercase btn-small w-100 fw-bold text-white">decouvrir</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md mx-md-3 col-12 card shadow p-0 my-2">
+                <div class="d-flex flex-column ">
+                    <div class="bg-experimental-thirdinary-dark rounded-top py-2"></div>
+                    <div class="bg-experimental-thirdinary px-4 py-4">
+                        <div class="d-flex flex-column">
+                            <h3 class="fs-3 text-black fw-bold mt-3">Amélioration</h3>
+                            <p class="fs-5 fw-light text-black w-75 d-none d-sm-none d-md-block">Monte en compétence
+                                avec nos tutoriels pour atteindre le niveau supérieur.</p>
+                            <p class="fs-5 fw-light text-black d-block d-sm-block d-md-none">Equipe toi avec des outils
+                                performants
+                                pour de meilleurs résultats.</p>
+                            <div class="d-flex justify-content-end">
+                                <a href="#"
+                                    class="d-none d-sm-none d-md-block bg-experimental-secondary btn py-2 px-1 text-uppercase btn-small w-25 fw-bold text-white">decouvrir</a>
+                                <a href="#"
+                                    class="d-block d-sm-block d-md-none bg-experimental-secondary btn py-2 px-1 text-uppercase btn-small w-100 fw-bold text-white">decouvrir</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="mb-3">
+    <div class="container">
+        <div class="row text-center">
+            <h3 class="fw-bold fs-3 text-black py-4">Nos tutoriels</h3>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="{% static 'experimental/imgs/network-basics.png' %}" alt="Network Basics"
+                        class="tutoriel-picture img-fluid shadow-lg">
+                    <p class="fs-4 mt-3 fw-bold text-center">Les bases du Networking<br><span
+                            class="mt-2 fw-light fs-5">Apprenez les
+                            bases et
+                            concepts autour du réseau</span></p>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="{% static 'experimental/imgs/troubleshooting.png' %}" alt="Network Basics"
+                        class="tutoriel-picture img-fluid shadow-lg">
+                    <p class="fs-4 mt-3 fw-bold text-center">Pratique
+                        de troubleshooting<br><span class="mt-2 fw-light fs-5">Exercez-vous grâce à des
+                            exercices de troubleshooting</span></p>
+
+                </div>
+
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="{% static 'experimental/imgs/practice-config.png' %}" alt="Network Basics"
+                        class="tutoriel-picture img-fluid shadow-lg">
+                    <p class="fs-4 mt-3 fw-bold text-center">Configuration
+                        fonctionnalités pratiques<br><span class="mt-2 fw-light fs-5">Apprenez à configurer des
+                            fonctionnalités réseaux</span></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-experimental-thirdinary p-0 mb-3">
+    <div class="container-fluid p-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 mx-auto">
+                    <div class="tools-upgrade-circle d-flex justify-content-center align-items-center">
+                        <img src="{% static 'experimental/imgs/upgrade-tool-picture.jpg' %}" alt="Cisco Switch image"
+                            class="tools-upgrade-picture img-fluid align-items-center text-center">
+                    </div>
+                </div>
+                <div class="col-12 col-md-8 my-auto">
+                    <div class="d-flex flex-column justify-content-md-center align-items-md-end my-auto mt-3 my-auto">
+                        <p class="fs-1 text-black fw-bold mb-4 text-md-end text-center w-md-75">Des outils pour
+                            votre apprentissage</p>
+                        <p class="fs-4 text-black fw-light text-md-end text-center w-md-75">Faites un pas de plus vers
+                            le
+                            succès
+                            en
+                            investissant
+                            dans des équipements de pointes</p>
+                        <a href="#"
+                            class="btn btn-large text-uppercase text-white bg-experimental-secondary px-4 py-3">c'est
+                            parti !</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

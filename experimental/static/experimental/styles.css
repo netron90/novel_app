@@ -1,0 +1,89 @@
+.bo {
+    border: 2px solid red;
+}
+
+.bg-experimental-accent {
+    background-color: #00BCD4;
+}
+
+.bg-experimental {
+    background-color: #0097A7;
+}
+
+.bg-experimental-light {
+    background-color: #B2EBF2;
+}
+
+.bg-experimental-dark {
+    background-color: #2A757F;
+}
+
+.bg-experimental-secondary {
+    background-color: #FF4081;
+}
+
+.bg-experimental-thirdinary-dark {
+    background-color: #D4BB00;
+}
+
+.bg-experimental-thirdinary {
+    background-color: #E2DBA7;
+}
+
+.text-experimental-accent {
+    color: #00BCD4 !important;
+}
+
+.text-experimental {
+    color: #0097A7 !important;
+}
+
+.text-experimental-dark {
+    color: #2A757F !important;
+}
+
+.experimental-navbar {
+    background-color: rgb(255, 255, 255);
+    transition: .5s;
+}
+
+.experimental-navbar:hover {
+    background-color: rgb(215, 215, 215);
+    transition: .5s;
+}
+
+.tutoriel-picture {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 50% !important;
+}
+
+.tools-upgrade-circle {
+    width: 300px !important;
+    height: 300px !important;
+    border-radius: 50% !important;
+    background-color: #D4BB00;
+}
+
+.tools-upgrade-picture {
+    width: 280px !important;
+    height: 280px !important;
+    border-radius: 50% !important;
+}
+
+
+.rounded-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(243, 243, 243);
+    animation-duration: .5;
+}
+
+.rounded-btn:hover {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(217, 217, 217);
+    animation-duration: .5;
+}

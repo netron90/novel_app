@@ -1,0 +1,442 @@
+{% extends 'novel/layout.html' %}
+{% load static %}
+{% block script %}
+<script src="{% static 'novel/novel.js' %}"></script>
+<script src="{% static 'novel/lightbox_novel.js' %}"></script>
+{% endblock %}
+{% block body %}
+<section>
+    <div class="container-fluid" style="height: 100vh;">
+        <div class="row novel-header-gradient shadow" style="height: 50vh;">
+            <div class="col-12">
+                <div class="d-flex flex-column justify-content-between align-items-center h-100">
+                    <div
+                        class="d-flex justify-content-center align-items-center p-2 novel-header-logo-rounded shadow-sm my-auto mb-3 mt-4">
+                        <img src="{% static 'novel/imgs/Logo1.svg' %}" alt="" style="width: 160px; height: 160px;">
+                    </div>
+                    <p class="fw-light fs-2 my-1 text-white">
+                        Publie et reste connecté !
+                    </p>
+                    <a href="#postNovelModal" data-bs-toggle="modal"
+                        class="btn bnt-lg text-uppercase novel-bg-secondary btn-post-novel text-white mt-3 mb-5 py-3">Publiez
+                        une annonce</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-0 d-none d-sm-none d-md-block" id="bg-area-data">
+            <div class="row">
+                <div class="col-md-2 bg-filter-area shadow-sm">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-around align-items-center p-3 mb-3">
+                            <div class="d-flex justify-content-center align-items-center filter-icon-rounded p-3">
+                                <i class="bi bi-funnel-fill novel-text-primary-dark align-self-center"></i>
+                            </div>
+
+                            <p class="fs-5 novel-text-primary-dark my-auto "> Annonces par pays</p>
+
+                        </div>
+                        <div>
+                            <form action="" id="id-country-filter">
+                                <select class="form-select" aria-label="Default select example">
+                                    {% if allCountries %}
+                                    <option selected id="{{ allCountries.0.id }}" value="{{ allCountries.0.id }}">
+                                        {{ allCountries.0.name }}
+                                    </option>
+                                    {% for allCountry in allCountries %}
+                                    {% if not forloop.first %}
+                                    <option value="{{ allCountry.id }}">{{ allCountry.name }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </form>
+                        </div>
+                        <div>
+                            <div class="row town">
+                                {% if townLists %}
+                                {% for townList in townLists %}
+                                <div class="col-5 town-container mx-2 p-2 rounded text-center my-auto mt-4 bg-light 
+                                                {% if forloop.first %}novel-text-primary primary-town-border active{% else %}novel-text-primary-dark primary-town-border{% endif %}"
+                                    onclick="onTownElemClick(event)">
+                                    <p class="mx-auto text-center fs-6 h6 town-name" data-townid="{{ townList.id }}">
+                                        {{ townList.name }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 bg-category-area">
+                    <div class="container-fluid p-0 ">
+                        <div class="row shadow-sm py-3">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-evenly ">
+
+                                    <div
+                                        class="arrow-left novel-bg-primary arrow-category-icon-rounded d-flex justify-content-center align-items-center my-auto">
+                                        <i class="bi bi-arrow-left-short align-self-center text-white"></i>
+                                    </div>
+                                    <div class="scroll-container">
+                                        <div class="scroll-content">
+                                            <!-- Scroll Content -->
+                                            <div
+                                                class="categories d-flex justify-content-center align-items-center slider-category-multiple-item">
+                                                {% if categoriesLists %}
+                                                {% for categoriesList in categoriesLists %}
+                                                <div class="category-name mx-3 px-4 fs-6 py-3 col rounded {% if forloop.first %} novel-bg-primary text-white {% else %}primary-town-border novel-text-primary-dark {% endif %}"
+                                                    data-categoryid="{{ categoriesList.id }}"
+                                                    onclick="onCategoryElemClick(event, '{{ categoriesList.id }}')">
+                                                    {{ categoriesList.name }}
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                            </div>
+                                            <!-- Scroll Content END -->
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="arrow-right novel-bg-primary arrow-category-icon-rounded d-flex justify-content-center align-items-center my-auto">
+                                        <i class="bi bi-arrow-right-short align-self-center text-white"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-3 w-100 mt-4 data-area-content card-group">
+                            {% if novelLists %}
+                            {% for novelList in novelLists %}
+                            <div class="col">
+                                <div class=" ">
+                                    <div class="card mb-4 mx-2">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="fst-italic my-auto ms-4 pt-2">Numéro de l'annonce</p>
+                                            <p class="d-inline mx-3 mt-2 text-end fw-bold my-auto">
+                                                {{ novelList.novel_number }}
+                                            </p>
+
+                                        </div>
+
+                                        {% if novelList.images.all|length != 1 %}
+                                        <div id="carousel{{ novelList.novel_number }}" class="carousel slide"
+                                            data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+
+                                                {% for image in novelList.images.all %}
+
+                                                <div class="carousel-item {% if forloop.first %}active{% endif %}"
+                                                    data-bs-interval="{{ image.interval }}">
+                                                    <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                        data-lightbox="image-{{ novelList.novel_number }}">
+                                                        <img src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                            alt="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                            class="img-fluid">
+                                                    </a>
+                                                </div>
+
+                                                {% endfor %}
+
+
+                                            </div>
+
+                                            <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carousel{{ novelList.novel_number }}"
+                                                data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carousel{{ novelList.novel_number }}"
+                                                data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+
+                                        </div>
+                                        {% else %}
+                                        {% with novelList.images.all|first as image %}
+                                        <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                            data-lightbox="image-{{ novelList.novel_number }}">
+                                            <img src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                alt="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                class="img-fluid">
+                                        </a>
+
+                                        {% endwith %}
+
+                                        {% endif %}
+
+
+                                        <div class="card-body novel-data py-3">
+                                            <h5 class="card-title text-center fw-bold">{{ novelList.name }}</h5>
+                                            <p class="card-text text-center">{{ novelList.brief_description }}</p>
+                                        </div>
+                                        <div class="card-footer py-3">
+
+                                            <a href="{% url 'viewnovel' novelList.id %}?country={{ allCountries.0.id }}&town={{ townLists.0.id }}"
+                                                class="btn bnt-lg w-100 text-uppercase novel-bg-primary text-white view-novel">Consulter</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="col-12 w-100 mb-3 p-5" style="height: 25vh;">
+
+                                <div class="d-flex align-items-center h-100 text-dark text-center">
+                                    <p class="fs-3 fw-bold">Aucune annonce pour cette categorie.</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid p-0 d-block d-sm-block d-md-none">
+            <div class="row shadow-lg py-3 px-2" id="bg-category-area-mobile" style="background-color: #f6f6f6;">
+                <div class="col-8 col-sm-8">
+                    <div class="d-flex flex-column my-auto justify-content-around align-items-start">
+                        <p class="fs-6 fw-light my-auto">Annonces</p>
+
+                        <p class="fs-6 fw-bold my-auto" id="selected-info">{{ allCountries.0.name }} |
+                            {{ townLists.0.name }} |
+                            {{ categoriesLists.0.name }}</p>
+
+
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 text-end">
+                    <div class="d-flex justify-content-end me-3">
+                        <a href="" class="text-end" data-bs-toggle="offcanvas" data-bs-target="#filterMenuMobileRight"
+                            aria-controls="filterMenuMobileRight">
+                            <div
+                                class="text-end btn my-auto shadow d-flex justify-content-center novel-bg-primary p-3 arrow-category-icon-rounded">
+                                <i class="bi bi-funnel-fill text-white align-self-center"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="filterMenuMobileRight"
+                        aria-labelledby="filterMenuMobileRight">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="filterMenuMobileRightLabel">Affinez votre recherche</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
+                                        <div class="d-flex justify-content-around align-items-center p-3 mb-3">
+                                            <div
+                                                class="d-flex justify-content-center align-items-center filter-icon-rounded p-3">
+                                                <i
+                                                    class="bi bi-funnel-fill novel-text-primary-dark align-self-center"></i>
+                                            </div>
+                                            <p class="fs-5 novel-text-primary-dark my-auto ms-3"> Annonces par pays</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div>
+                                        <form action="" id="id-country-filter-mobile">
+                                            <select class="form-select" aria-label="Default select example">
+                                                {% if allCountries %}
+                                                <option selected id="{{ allCountries.0.id }}"
+                                                    value="{{ allCountries.0.id }}">{{ allCountries.0.name }}
+                                                </option>
+                                                {% for allCountry in allCountries %}
+                                                {% if not forloop.first %}
+                                                <option value="{{ allCountry.id }}">{{ allCountry.name }}</option>
+                                                {% endif %}
+                                                {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <div class="row town mobile">
+                                            {% if townLists %}
+                                            {% for townList in townLists %}
+                                            <div class="col-4 town-container-mobile mx-2 p-2 rounded text-center my-auto mt-4 bg-light {% if forloop.first %}novel-text-primary primary-town-border active{% else %}novel-text-primary-dark primary-town-border{% endif %}"
+                                                onclick="onTownElemClickMobile(event)">
+                                                <p class="mx-auto text-center fs-6 h6 town-name-mobile"
+                                                    data-townid="{{ townList.id }}">{{ townList.name }}</p>
+                                            </div>
+                                            {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                            <div class="row">
+                                <div class="col-12 my-2">
+                                    <p class="fs-3 novel-text-primary-dark my-auto text-center text-uppercase">
+                                        Categories</p>
+                                </div>
+                            </div>
+                            <div class="row categories-mobile">
+                                {% if categoriesLists %}
+                                {% for categoriesList in categoriesLists %}
+                                <div class="col-5 category-name-mobile mx-2 p-2 my-2 rounded {% if forloop.first %} novel-bg-primary text-white {% else %}primary-town-border novel-text-primary-dark{% endif %}"
+                                    data-categoryid="{{ categoriesList.id }}"
+                                    onclick="onCategoryElemClickMobile(event, '{{ categoriesList.id }}')">
+                                    <p class="mx-auto text-center fs-6 h6">{{ categoriesList.name }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid p-0">
+                <div class="container">
+
+                    <div class="row data-area-content-mobile">
+                        {% if novelLists %}
+                        {% for novelList in novelLists %}
+                        <div class="col-md-3 mb-3 mt-4">
+                            <div class="card-group">
+                                <div class="card">
+
+                                    {% if novelList.images.all|length != 1 %}
+
+                                    <div id="carousel-mobile" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+
+                                            {% for image in novelList.images.all %}
+
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}"
+                                                data-bs-interval="{{ image.interval }}"
+                                                data-bs-interval="{{ novelList.interval }}">
+                                                <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                    data-lightbox="image-{{image.novel_number}}">
+
+                                                    <img class="img-fluid"
+                                                        src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                        alt="{{ novelList.name }}">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+                                    {% else %}
+
+
+                                    {% with novelList.images.all|first as image %}
+                                    <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                        data-lightbox="image-{{image.novel_number}}">
+
+                                        <img class="img-fluid"
+                                            src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                            alt="{{ novelList.name }}">
+                                    </a>
+
+                                    {% endwith %}
+                                    {% endif %}
+
+
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">{{ novelList.name }}</h5>
+                                        <p class="card-text text-center">{{ novelList.brief_description }}</p>
+                                    </div>
+                                    <div class="card-footer py-3">
+
+                                        <a href="{% url 'viewnovel' novelList.id %}?country={{ allCountries.0.id }}&town={{ townLists.0.id }}"
+                                            class="btn bnt-lg w-100 text-uppercase novel-bg-primary text-white">Consulter</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="col-12 w-100 mb-3 p-5" style="height: 50vh;">
+                            <div class="d-flex align-items-center h-100 text-dark text-center">
+                                <p class="fs-3 fw-bold">Aucune annonce pour cette categorie.</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="postNovelModal" tabindex="-1" aria-labelledby="postNovelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4 text-dark" id="postNovelModalLabel">Postez une annonce</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="fs-5">Pour poster votre annonce, contactez-nous :</p>
+                    </div>
+                </div>
+                <div class="row text-dark">
+                    <div class="col-12 my-2">
+                        <a href="tel:+229000000000" class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-telephone-fill align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">(+229)000 000 000</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 my-2">
+                        <a href="mailto:post.link@bnononce.com"
+                            class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-envelope-open-fill align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">post.link@bnononce.com</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 my-2">
+                        <a href="https://ig.me/m/netron90" target="_blank"
+                            class="btn btn-lg text-white card btn-novel-contact mx-auto">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="bi bi-instagram align-self-center me-3 fs-6 py-2"></i>
+                                <p class="fs-6 my-auto fw-bold me-3">Nonnonce Insta</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer text-center mx-auto">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-novel-contact text-white" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
