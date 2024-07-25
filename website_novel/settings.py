@@ -365,6 +365,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", secretKey)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = True
 
 # Handle multiple allowed hosts
 # allowed_hosts = os.environ.get("ALLOWED_HOSTS", "")
@@ -375,6 +376,7 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 #     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ALLOWED_HOSTS = ['novel-app-2yrg.onrender.com']
+# ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
@@ -427,6 +429,10 @@ DATABASES = {
         'HOST': 'dpg-cqh2jmks1f4s73bi6v60-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 # Authentication
