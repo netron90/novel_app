@@ -367,12 +367,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", secretKey)
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 # Handle multiple allowed hosts
-allowed_hosts = os.environ.get("ALLOWED_HOSTS", "")
-ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
+# allowed_hosts = os.environ.get("ALLOWED_HOSTS", "")
+# ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 # Ensure the default values in case ALLOWED_HOSTS is not set or empty
-if not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# if not ALLOWED_HOSTS:
+#     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['novel-app-2yrg.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
