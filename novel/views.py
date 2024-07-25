@@ -98,19 +98,17 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-defaultDB='postgres'
-
 def index(request):
-    allCountries = Country.objects.using(defaultDB).all()
-    getSelectedCountry = Country.objects.using(defaultDB).get(name='Bénin')
+    allCountries = Country.objects.all()
+    getSelectedCountry = Country.objects.get(name='Bénin')
     getSelectedCountryID = getSelectedCountry.id
     townLists = getSelectedCountry.town_list.all()
-    getSelectedTown = Town.objects.using(defaultDB).get(name='Cotonou')
+    getSelectedTown = Town.objects.get(name='Cotonou')
     getSelectedTownID = getSelectedTown.id
     categoriesLists = getSelectedTown.category_list.all()
-    getSelectedCategory = Category.objects.using(defaultDB).get(name='Jobs')
+    getSelectedCategory = Category.objects.get(name='Jobs')
     getSelectedCategoryID = getSelectedCategory.id
-    novels = Novel.objects.using(defaultDB).filter(
+    novels = Novel.objects.filter(
         country=getSelectedCountryID,
         town=getSelectedTownID,
         category=getSelectedCategoryID
@@ -121,7 +119,7 @@ def index(request):
             novel.status = True
             novel.save()
 
-    novelLists = Novel.objects.using(defaultDB).filter(
+    novelLists = Novel.objects.filter(
         country=getSelectedCountryID,
         town=getSelectedTownID,
         category=getSelectedCategoryID,
@@ -138,23 +136,23 @@ def index(request):
     })
 
 def view_novel(request, novel_id):
-    novelDetail = Novel.objects.using(defaultDB).get(pk=novel_id)
+    novelDetail = Novel.objects.get(pk=novel_id)
     country_id = request.GET.get('country')
     town_id = request.GET.get('town')
-    novels_by_country = Novel.objects.using(defaultDB).filter(country_id=country_id, status=False).order_by('-novel_number') if country_id else Novel.objects.all()
+    novels_by_country = Novel.objects.filter(country_id=country_id, status=False).order_by('-novel_number') if country_id else Novel.objects.all()
     for novel in novels_by_country:
         if novel.date_end < timezone.now():
             novel.status = True
             novel.save()
     
-    novels_by_country = Novel.objects.using(defaultDB).filter(country_id=country_id, status=False).order_by('-novel_number') if country_id else Novel.objects.all()
+    novels_by_country = Novel.objects.filter(country_id=country_id, status=False).order_by('-novel_number') if country_id else Novel.objects.all()
 
-    novels_by_town = Novel.objects.using(defaultDB).filter(town_id=town_id, status=False).order_by('-novel_number') if town_id else Novel.objects.all()
+    novels_by_town = Novel.objects.filter(town_id=town_id, status=False).order_by('-novel_number') if town_id else Novel.objects.all()
     for novel in novels_by_town:
         if novel.date_end < timezone.now():
             novel.status = True
             novel.save()
-    novels_by_town = Novel.objects.using(defaultDB).filter(town_id=town_id, status=False).order_by('-novel_number') if town_id else Novel.objects.all()
+    novels_by_town = Novel.objects.filter(town_id=town_id, status=False).order_by('-novel_number') if town_id else Novel.objects.all()
     return render(request, "novel/view-novel.html", {
         "novelDetail": novelDetail,
         "novels_by_country": novels_by_country,
@@ -251,16 +249,16 @@ def view_pricing(request):
 #     })
 
 def view_novel(request, novel_id):
-    novelDetail = Novel.objects.using(defaultDB).get(pk=novel_id)
+    novelDetail = Novel.objects.get(pk=novel_id)
     category_id = novelDetail.category.id
     country_id = novelDetail.country.id
     town_id = novelDetail.town.id
 
     # Update novel status based on date_end
-    Novel.objects.using(defaultDB).filter(date_end__lt=timezone.now()).update(status=True)
+    Novel.objects.filter(date_end__lt=timezone.now()).update(status=True)
 
     # Filter novels by country
-    novels_by_country = Novel.objects.using(defaultDB).filter(
+    novels_by_country = Novel.objects.filter(
         country_id=country_id,
         category_id=category_id,
         status=False,
@@ -268,7 +266,7 @@ def view_novel(request, novel_id):
     ).exclude(id=novel_id).order_by('-novel_number')
 
     # Filter novels by town
-    novels_by_town = Novel.objects.using(defaultDB).filter(
+    novels_by_town = Novel.objects.filter(
         town_id=town_id,
         category_id=category_id,
         status=False,
@@ -282,12 +280,12 @@ def view_novel(request, novel_id):
     })
 
 def get_town(request, country_id):
-    countryObject = Country.objects.using(defaultDB).get(pk=country_id)
+    countryObject = Country.objects.get(pk=country_id)
     townData = countryObject.town_list.all()
     return JsonResponse({"towns": list(townData.values())})
 
 def get_categories(request, town_id):
-    townObject = Town.objects.using(defaultDB).get(pk=town_id)
+    townObject = Town.objects.get(pk=town_id)
     categoriesData = townObject.category_list.all()
     return JsonResponse({"categories": list(categoriesData.values())})
 
@@ -338,7 +336,7 @@ def get_categories(request, town_id):
 #     return JsonResponse({'novels': novel_list, 'images': novel_images})
 
 def get_novels(request, country_id, town_id, category_id):
-    novels = Novel.objects.using(defaultDB).filter(
+    novels = Novel.objects.filter(
         country_id=country_id, town_id=town_id, category_id=category_id, status=False, date_end__gte=timezone.now()
     ).order_by('-novel_number')
     novel_list = list(novels.values('id', 'name', 'novel_number', 'brief_description'))
