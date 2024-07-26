@@ -1,6 +1,7 @@
 asgiref==3.8.1
 awsebcli==3.20.10
 botocore==1.31.85
+Brotli==1.1.0
 cement==2.8.2
 certifi==2024.7.4
 charset-normalizer==3.3.2
@@ -14,9 +15,9 @@ packaging==24.1
 pathspec==0.10.1
 psycopg==3.2.1
 psycopg2-binary==2.9.9
-# pypiwin32==223
+pypiwin32==223
 python-dateutil==2.9.0.post0
-# pywin32==306
+pywin32==306
 PyYAML==6.0.1
 requests==2.32.3
 semantic-version==2.8.5
