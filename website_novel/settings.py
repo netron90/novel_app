@@ -376,9 +376,10 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 #     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # ALLOWED_HOSTS = ['novel-app-2yrg.onrender.com']
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
-if not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'novel-app-2yrg.onrender.com']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
+# if not ALLOWED_HOSTS:
+#     ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'novel-app-2yrg.onrender.com']
 # ALLOWED_HOSTS = []
 
 # Application definition
