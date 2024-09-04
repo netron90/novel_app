@@ -131,10 +131,9 @@
 
                                                 <div class="carousel-item {% if forloop.first %}active{% endif %}"
                                                     data-bs-interval="{{ image.interval }}">
-                                                    <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                    <a href="{{ image.image_url }}"
                                                         data-lightbox="image-{{ novelList.novel_number }}">
-                                                        <img src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
-                                                            alt="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                        <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                             class="img-fluid">
                                                     </a>
                                                 </div>
@@ -159,11 +158,11 @@
 
                                         </div>
                                         {% else %}
+                                        <!-- <p>Image URL: {{ image.image_url }}</p> -->
                                         {% with novelList.images.all|first as image %}
-                                        <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                        <a href="{{ image.image_url }}"
                                             data-lightbox="image-{{ novelList.novel_number }}">
-                                            <img src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
-                                                alt="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                            <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                 class="img-fluid">
                                         </a>
 

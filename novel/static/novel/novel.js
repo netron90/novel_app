@@ -329,14 +329,17 @@ function updateNovels(novels, images) {
                 carouselItemDivDesktop.setAttribute('data-bs-interval', image.interval);
 
                 const carouselItemAnchorDesktop = document.createElement('a');
-                carouselItemAnchorDesktop.href = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                // carouselItemAnchorDesktop.href = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemAnchorDesktop.href = `${image.image_url}`;
                 carouselItemAnchorDesktop.setAttribute('data-lightbox', `image-${novel.novel_number}`);
 
                 const carouselItemImgDesktop = document.createElement('img');
-                carouselItemImgDesktop.src = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                // carouselItemImgDesktop.src = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemImgDesktop.src = `${image.image_url}`;
                 console.log("Image URL:");
                 console.log(carouselItemImgDesktop);
-                carouselItemImgDesktop.alt = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                // carouselItemImgDesktop.alt = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemImgDesktop.alt = `${image.image_url}`;
                 carouselItemImgDesktop.className = 'img-fluid';
 
                 carouselItemAnchorDesktop.appendChild(carouselItemImgDesktop);
@@ -439,12 +442,15 @@ function updateNovels(novels, images) {
                 carouselItemDivMobile.setAttribute('data-bs-interval', image.interval);
 
                 const carouselItemAnchorMobile = document.createElement('a');
-                carouselItemAnchorMobile.href = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                // carouselItemAnchorMobile.href = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemAnchorMobile.href = `${image.image_url}`;
                 carouselItemAnchorMobile.setAttribute('data-lightbox', `image-${novel.novel_number}`);
 
                 const carouselItemImgMobile = document.createElement('img');
-                carouselItemImgMobile.src = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
-                carouselItemImgMobile.alt = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                // carouselItemImgMobile.src = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemImgMobile.src = `${image.image_url}`;
+                // carouselItemImgMobile.alt = `${image.image_url}${novel.novel_number}_${imgIndex}.jpg`;
+                carouselItemImgMobile.alt = `${image.image_url}`;
                 carouselItemImgMobile.className = 'img-fluid';
 
                 carouselItemAnchorMobile.appendChild(carouselItemImgMobile);

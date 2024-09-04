@@ -44,10 +44,14 @@
                                     {% for image in novelDetail.images.all %}
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}"
                                         data-bs-interval="5000">
-                                        <a href="{{ image.image_url }}{{ novelDetail.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                        <!-- <a href="{{ image.image_url }}{{ novelDetail.novel_number }}_{{ forloop.counter0 }}.jpg"
                                             data-lightbox="image-{{ novelDetail.novel_number }}">
                                             <img src="{{ image.image_url }}{{ novelDetail.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                 class="img-fluid">
+                                        </a> -->
+                                        <a href="{{ image.image_url }}"
+                                            data-lightbox="image-{{ novelDetail.novel_number }}">
+                                            <img src="{{ image.image_url }}" class="img-fluid">
                                         </a>
                                     </div>
                                     {% endfor %}
@@ -110,11 +114,16 @@
                     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             {% for image in novelDetail.images.all %}
-                            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                            <!-- <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
                                 <a href="{{ image.image_url }}{{ novelDetail.novel_number }}_{{ forloop.counter0 }}.jpg"
                                     data-lightbox="image-{{ novelDetail.novel_number }}">
                                     <img src="{{ image.image_url }}{{ novelDetail.novel_number }}_{{ forloop.counter0 }}.jpg"
                                         class="img-fluid">
+                                </a>
+                            </div> -->
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                                <a href="{{ image.image_url }}" data-lightbox="image-{{ novelDetail.novel_number }}">
+                                    <img src="{{ image.image_url }}" class="img-fluid">
                                 </a>
                             </div>
                             {% endfor %}
@@ -122,10 +131,13 @@
                     </div>
                     {% else %}
                     {% with novelDetail.images.all|first as image %}
-                    <a href="{{ novelDetail.images.image_url }}{{ novelDetail.novel_number }}_0.jpg"
+                    <!-- <a href="{{ novelDetail.images.image_url }}{{ novelDetail.novel_number }}_0.jpg"
                         data-lightbox="image-{{ novelDetail.novel_number }}">
                         <img src="{{ image.image_url }}{{ novelDetail.novel_number }}_0.jpg" class="img-fluid"
                             alt="{{ image.image_url }}{{ novelDetail.novel_number }}_0.jpg">
+                    </a> -->
+                    <a href="{{ novelDetail.images.image_url }}" data-lightbox="image-{{ novelDetail.novel_number }}">
+                        <img src="{{ image.image_url }}" class="img-fluid" alt="{{ image.image_url }}">
                     </a>
                     {% endwith %}
                     {% endif %}
@@ -212,10 +224,15 @@
                                                 {% for image in novel_by_town.images.all %}
                                                 <div class="carousel-item {% if forloop.first %}active{% endif %}"
                                                     data-bs-interval="{{ image.interval }}">
-                                                    <a href="{{ image.image_url }}{{ novel_by_town.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                    <!-- <a href="{{ image.image_url }}{{ novel_by_town.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                         data-lightbox="image-{{ novel_by_town.novel_number }}">
                                                         <img src="{{ image.image_url }}{{ novel_by_town.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                             alt="{{ image.image_url }}{{ novel_by_town.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                            class="img-fluid">
+                                                    </a> -->
+                                                    <a href="{{ image.image_url }}"
+                                                        data-lightbox="image-{{ novel_by_town.novel_number }}">
+                                                        <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                             class="img-fluid">
                                                     </a>
                                                 </div>
@@ -236,10 +253,15 @@
                                         </div>
                                         {% else %}
                                         {% with novelDetail.images.all|first as image %}
-                                        <a href="{{ image.image_url }}{{ novel_by_town.novel_number }}_0.jpg"
+                                        <!-- <a href="{{ image.image_url }}{{ novel_by_town.novel_number }}_0.jpg"
                                             data-lightbox="image-{{ novel_by_town.novel_number }}">
                                             <img src="{{ image.image_url }}{{ novel_by_town.novel_number }}_0.jpg"
                                                 alt="{{ image.image_url }}{{ novel_by_town.novel_number }}_0.jpg"
+                                                class="img-fluid">
+                                        </a> -->
+                                        <a href="{{ image.image_url }}"
+                                            data-lightbox="image-{{ novel_by_town.novel_number }}">
+                                            <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                 class="img-fluid">
                                         </a>
                                         {% endwith %}
@@ -329,10 +351,15 @@
                                                 {% for image in novel_by_country.images.all %}
                                                 <div class="carousel-item {% if forloop.first %}active{% endif %}"
                                                     data-bs-interval="{{ image.interval }}">
-                                                    <a href="{{ image.image_url }}{{ novel_by_country.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                    <!-- <a href="{{ image.image_url }}{{ novel_by_country.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                         data-lightbox="image-{{ novel_by_country.novel_number }}">
                                                         <img src="{{ image.image_url }}{{ novel_by_country.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                             alt="{{ image.image_url }}{{ novel_by_country.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                            class="img-fluid">
+                                                    </a> -->
+                                                    <a href="{{ image.image_url }}"
+                                                        data-lightbox="image-{{ novel_by_country.novel_number }}">
+                                                        <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                             class="img-fluid">
                                                     </a>
                                                 </div>
@@ -355,10 +382,15 @@
                                         </div>
                                         {% else %}
                                         {% with novelDetail.images.all|first as image %}
-                                        <a href="{{ image.image_url }}{{ novel_by_country.novel_number }}_0.jpg"
+                                        <!-- <a href="{{ image.image_url }}{{ novel_by_country.novel_number }}_0.jpg"
                                             data-lightbox="image-{{ novel_by_country.novel_number }}">
                                             <img src="{{ image.image_url }}{{ novel_by_country.novel_number }}_0.jpg"
                                                 alt="{{ image.image_url }}{{ novel_by_country.novel_number }}_0.jpg"
+                                                class="img-fluid">
+                                        </a> -->
+                                        <a href="{{ image.image_url }}"
+                                            data-lightbox="image-{{ novel_by_country.novel_number }}">
+                                            <img src="{{ image.image_url }}" alt="{{ image.image_url }}"
                                                 class="img-fluid">
                                         </a>
                                         {% endwith %}
