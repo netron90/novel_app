@@ -322,11 +322,17 @@
                                             <div class="carousel-item {% if forloop.first %}active{% endif %}"
                                                 data-bs-interval="{{ image.interval }}"
                                                 data-bs-interval="{{ novelList.interval }}">
-                                                <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                <!-- <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
                                                     data-lightbox="image-{{image.novel_number}}">
 
                                                     <img class="img-fluid"
                                                         src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                                        alt="{{ novelList.name }}">
+                                                </a> -->
+                                                <a href="{{ image.image_url }}"
+                                                    data-lightbox="image-{{image.novel_number}}">
+
+                                                    <img class="img-fluid" src="{{ image.image_url }}"
                                                         alt="{{ novelList.name }}">
                                                 </a>
                                             </div>
@@ -339,12 +345,16 @@
 
 
                                     {% with novelList.images.all|first as image %}
-                                    <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
+                                    <!-- <a href="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
                                         data-lightbox="image-{{image.novel_number}}">
 
                                         <img class="img-fluid"
                                             src="{{ image.image_url }}{{ novelList.novel_number }}_{{ forloop.counter0 }}.jpg"
                                             alt="{{ novelList.name }}">
+                                    </a> -->
+                                    <a href="{{ image.image_url }}" data-lightbox="image-{{image.novel_number}}">
+
+                                        <img class="img-fluid" src="{{ image.image_url }}" alt="{{ novelList.name }}">
                                     </a>
 
                                     {% endwith %}
