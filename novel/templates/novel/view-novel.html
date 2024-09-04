@@ -136,7 +136,7 @@
                         <img src="{{ image.image_url }}{{ novelDetail.novel_number }}_0.jpg" class="img-fluid"
                             alt="{{ image.image_url }}{{ novelDetail.novel_number }}_0.jpg">
                     </a> -->
-                    <a href="{{ novelDetail.images.image_url }}" data-lightbox="image-{{ image.novel_number }}">
+                    <a href="{{ image.image_url }}" data-lightbox="image-{{ image.novel_number }}">
                         <img src="{{ image.image_url }}" class="img-fluid" alt="{{ image.image_url }}">
                     </a>
                     {% endwith %}
