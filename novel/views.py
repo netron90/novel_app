@@ -106,6 +106,7 @@ def index(request):
     getSelectedTown = Town.objects.get(name='Cotonou')
     getSelectedTownID = getSelectedTown.id
     categoriesLists = getSelectedTown.category_list.all()
+    print("Category List: ${categoriesLists}")
     getSelectedCategory = Category.objects.get(name='Jobs')
     getSelectedCategoryID = getSelectedCategory.id
     novels = Novel.objects.filter(
