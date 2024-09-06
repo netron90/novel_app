@@ -10,8 +10,7 @@ class User(AbstractUser):
     pass
 
 class Country(models.Model):
-    name = models.CharField(max_length=64),
-    # country_code = models.CharField(max_length=64, default="")
+    name = models.CharField(max_length=64)
 
     def __str__(self):
         return self.name

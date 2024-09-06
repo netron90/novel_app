@@ -11,5 +11,4 @@ urlpatterns=[
     path("<int:country_id>/get-towns", views.get_town, name="towns"),
     path("<int:town_id>/get-categories", views.get_categories, name="categories"),
     path('<int:country_id>/<int:town_id>/<int:category_id>/get-novels', views.get_novels, name='get-novels'),
-    # path("api/get-countries", views.get_countries, name="allcountries"),
 ]
