@@ -343,6 +343,6 @@ def get_novels(request, country_id, town_id, category_id):
     images = {novel.id: list(novel.images.values('image_url', 'interval')) for novel in novels}
     return JsonResponse({'novels': novel_list, 'images': images})
 
-def get_countries(request):
-    countries = Country.objects.all()
-    return JsonResponse({'countries': countries})
+# def get_countries(request):
+#     countries = Country.objects.all()
+#     return JsonResponse({'countries': countries})
