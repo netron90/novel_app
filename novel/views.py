@@ -348,10 +348,11 @@ def get_countries(request):
     countries = Country.objects.all()
     return JsonResponse({'countries': list(countries.values())})
 
-def get_towns(request):
-    towns = Town.objects.all()
-    return JsonResponse({'towns': list(towns.values())})
+def get_towns(request, country_id):
+    countryObject = Country.objects.get(pk=country_id)
+    townData = countryObject.town_list.all()
+    return JsonResponse({"towns": list(townData.values())})
 
-def get_categories(request):
+def get_categories(request,):
     categories = Category.objects.all()
     return JsonResponse({'categories': list(categories.values())})
