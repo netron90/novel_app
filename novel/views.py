@@ -347,3 +347,11 @@ def get_novels(request, country_id, town_id, category_id):
 def get_countries(request):
     countries = Country.objects.all()
     return JsonResponse({'countries': list(countries.values())})
+
+def get_towns(request):
+    towns = Town.objects.all()
+    return JsonResponse({'towns': list(towns.values())})
+
+def get_categories(request):
+    categories = Category.objects.all()
+    return JsonResponse({'categories': list(categories.values)})
