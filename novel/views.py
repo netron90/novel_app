@@ -354,4 +354,4 @@ def get_towns(request):
 
 def get_categories(request):
     categories = Category.objects.all()
-    return JsonResponse({'categories': list(categories.values)})
+    return JsonResponse({'categories': list(categories.values())})
