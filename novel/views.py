@@ -384,6 +384,4 @@ def get_novels_api(request, country_id, town_id, category_id):
         }
         novel_list.append(novel_data)
 
-        print(f"LIST: {novel_list}")
-
     return JsonResponse({'novels': novel_list})
