@@ -14,4 +14,5 @@ urlpatterns=[
     path("api/get-countries", views.get_countries, name="allcountries"),
     path("api/get-towns/<int:country_id>", views.get_towns_api, name="alltowns"),
     path("api/get-categories/<int:town_id>", views.get_categories_api, name="allcategories"),
+    path("api/get-novels/<int:country_id>/<int:town_id>/<int:category_id>", views.get_novels_api, name="allnovelapi"),
 ]

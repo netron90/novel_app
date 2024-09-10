@@ -357,3 +357,11 @@ def get_categories_api(request, town_id):
     townObject = Town.objects.get(pk=town_id)
     categoriesData = townObject.category_list.all()
     return JsonResponse({"categories": list(categoriesData.values())})
+
+def get_novels_api(request,country_id, town_id, category_id):
+    novels = Novel.objects.filter(
+        country_id=country_id, town_id=town_id, category_id=category_id, status=False, date_end__gte=timezone.now()
+    ).order_by('-novel_number')
+    novel_list = list(novels.values('id', 'name', 'novel_number', 'brief_description'))
+    images = {novel.id: list(novel.images.values('image_url', 'interval')) for novel in novels}
+    return JsonResponse({'novels': novel_list, 'images': images})
