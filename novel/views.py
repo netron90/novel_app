@@ -371,9 +371,16 @@ def get_novels_api(request, country_id, town_id, category_id):
         novel_data = {
             'id': novel.id,
             'name': novel.name,
-            'novel_number': novel.novel_number,
+            'serial_number': novel.novel_number,
             'brief_description': novel.brief_description,
-            'images': images
+            'description': novel.description,
+            'date_start': novel.date_start,
+            'date_end': novel.date_end,
+            'location': novel.location,
+            'phone_contact': novel.phone_contact,
+            'mail_contact': novel.mail_contact,
+            'number':novel.number,
+            'images': images,
         }
         novel_list.append(novel_data)
 
