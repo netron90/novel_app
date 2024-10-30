@@ -424,14 +424,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website_novel.wsgi.application'
 # postgresql://postlink_db_vywv_user:W1beedYBieXVTxtXiYCL4fqSyY0Rhx7f@dpg-crbl02t6l47c73d75ejg-a.oregon-postgres.render.com/postlink_db_vywv
+# postgresql://postlink_db_whdl_user:zd78Gix1zleNvR6jLSoMYv0CZbCKptyE@dpg-csh4p4rqf0us739ugj6g-a.oregon-postgres.render.com/postlink_db_whdl
+
 # Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postlink_db_vywv',
-        'USER': 'postlink_db_vywv_user',
-        'PASSWORD': 'W1beedYBieXVTxtXiYCL4fqSyY0Rhx7f',
-        'HOST': 'dpg-crbl02t6l47c73d75ejg-a.oregon-postgres.render.com',
+        'NAME': 'postlink_db_whdl',
+        'USER': 'postlink_db_whdl_user',
+        'PASSWORD': 'zd78Gix1zleNvR6jLSoMYv0CZbCKptyE',
+        'HOST': 'dpg-csh4p4rqf0us739ugj6g-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
     # 'default': {
